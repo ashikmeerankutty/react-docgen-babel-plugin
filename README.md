@@ -4,3 +4,5 @@
 
 
 This babel plugin allow you to access those information right inside your React class.
+
+Demo: https://ashikmeerankutty.github.io/react-docgen-babel-plugin/
