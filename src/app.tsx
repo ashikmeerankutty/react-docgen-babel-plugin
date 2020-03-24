@@ -1,8 +1,9 @@
-import React from "react";
+import React from 'react';
+import ToggleInfo from  './views/toggle';
 
 const App = () => (
   <div>
-    Hello
+    <ToggleInfo />
   </div>
 );
 
