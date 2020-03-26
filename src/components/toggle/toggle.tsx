@@ -1,4 +1,4 @@
-import * as React from 'react'
+import  React from 'react'
 import { ChangeEventHandler, HTMLAttributes } from 'react';
 import classNames from 'classnames';
 import { CommonProps } from '../common';
