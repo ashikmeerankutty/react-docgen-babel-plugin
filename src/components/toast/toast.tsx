@@ -1,33 +1,34 @@
-import React, {
-  FunctionComponent,
-  HTMLAttributes,
-  ReactNode,
-} from 'react';
+import React, { FunctionComponent, HTMLAttributes, ReactNode } from "react";
 
-import { CommonProps, keysOf } from '../common';
+import { CommonProps, keysOf } from "../common";
 
-import { IconType } from '../icon';
+import { IconType } from "../icon";
 
-type ToastColor = 'primary' | 'success' | 'warning' | 'danger';
+export enum ToastColor {
+  primary = "primary",
+  success = "success",
+  warning = "warning",
+  danger = "danger"
+}
 
 const colorToClassNameMap: { [color in ToastColor]: string } = {
-  primary: 'euiToast--primary',
-  success: 'euiToast--success',
-  warning: 'euiToast--warning',
-  danger: 'euiToast--danger',
+  primary: "euiToast--primary",
+  success: "euiToast--success",
+  warning: "euiToast--warning",
+  danger: "euiToast--danger"
 };
 
 export const COLORS = keysOf(colorToClassNameMap);
 
 export interface EuiToastProps
   extends CommonProps,
-    Omit<HTMLAttributes<HTMLDivElement>, 'title'> {
+    Omit<HTMLAttributes<HTMLDivElement>, "title"> {
   title?: ReactNode;
-  color?: ToastColor;
   iconType?: IconType;
   onClose?: () => void;
+  color: ToastColor;
 }
 
 export const EuiToast: FunctionComponent<EuiToastProps> = () => {
-  return <div>Toast Component</div>
+  return <div>Toast Component</div>;
 };
