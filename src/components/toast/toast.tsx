@@ -4,12 +4,7 @@ import { CommonProps, keysOf } from "../common";
 
 import { IconType } from "../icon";
 
-export enum ToastColor {
-  primary = "primary",
-  success = "success",
-  warning = "warning",
-  danger = "danger"
-}
+export type ToastColor = "primary" | "success" | "warning" | "danger"
 
 const colorToClassNameMap: { [color in ToastColor]: string } = {
   primary: "euiToast--primary",
@@ -20,9 +15,9 @@ const colorToClassNameMap: { [color in ToastColor]: string } = {
 
 export const COLORS = keysOf(colorToClassNameMap);
 
-export interface EuiToastProps
-  extends CommonProps,
-    Omit<HTMLAttributes<HTMLDivElement>, "title"> {
+export interface EuiToastProps extends
+  CommonProps,
+    Omit<HTMLAttributes<HTMLDivElement>, "title">  {
   title?: ReactNode;
   iconType?: IconType;
   onClose?: () => void;
