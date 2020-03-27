@@ -23,7 +23,7 @@ export const PropsInfo = ({ component }: PropsInfoProps) => {
           return (
             <tr key={key}>
               <td>{key}</td>
-              <td>{value.type.name}</td>
+              <td>{value.type.name === "enum" ? `enum ${value.type.raw} [${value.type.value.map((d:any)=>d.value).join(", ")}]` : value.type.name}</td>
               <td>{value.required ? "true" : "false"}</td>
               <td>{value.description}</td>
             </tr>
