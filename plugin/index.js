@@ -18,6 +18,8 @@ function injectReactDocInfo(path, state, code, t) {
   const program = path.scope.getProgramParent().path;
   const whiteListedHtmlProps = ["className"]
 
+  const ComponentsWithHTML = []
+
   const data = propsParser.withCustomConfig('testconfig.json', {
     propFilter: (prop, component)=>{
       /*
@@ -34,6 +36,9 @@ function injectReactDocInfo(path, state, code, t) {
         return true
       }
       if (prop.parent) {
+        if(prop.parent.fileName.includes('node_modules')) {
+          ComponentsWithHTML.push(component.name)
+        }
         return !prop.parent.fileName.includes('node_modules')
       }
       return true
@@ -44,6 +49,7 @@ function injectReactDocInfo(path, state, code, t) {
   if(docgenResults.length > 0){
   docgenResults.forEach(function (docgenResult, index) {
     const exportName = docgenResult.displayName
+    docgenResult.hasHtml = ComponentsWithHTML.includes(docgenResult.displayName)
     const docNode = buildObjectExpression(docgenResult, t);
     const docgenInfo = t.expressionStatement(
       t.assignmentExpression(
