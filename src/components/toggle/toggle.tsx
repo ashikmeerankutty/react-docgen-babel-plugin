@@ -12,8 +12,8 @@ export const TYPES = Object.keys(typeToInputTypeMap);
 
 export type ToggleType = keyof typeof typeToInputTypeMap;
 
-export type EuiToggleProps = HTMLAttributes<HTMLDivElement> &
-  CommonProps & {
+export type EuiToggleProps = CommonProps & HTMLAttributes<HTMLDivElement> &
+   {
     id?: string;
     /**
      * Initial state of the toggle
