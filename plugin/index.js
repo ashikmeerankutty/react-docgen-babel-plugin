@@ -17,7 +17,15 @@ function injectReactDocInfo(path, state, code, t) {
   const { filename } = state.file.opts;
   const program = path.scope.getProgramParent().path;
 
-  const data = propsParser.withCustomConfig('tsconfig.json', {shouldExtractLiteralValuesFromEnum: true}).parse
+  const data = propsParser.withCustomConfig('testconfig.json', {
+    propFilter: (prop, component)=>{
+      if (prop.parent) {
+        return !prop.parent.fileName.includes('node_modules')
+      }
+      return true
+    },
+    shouldExtractLiteralValuesFromEnum: true
+  }).parse
   let docgenResults = data(filename);
   if(docgenResults.length > 0){
   docgenResults.forEach(function (docgenResult, index) {
