@@ -12,7 +12,7 @@ export const TYPES = Object.keys(typeToInputTypeMap);
 
 export type ToggleType = keyof typeof typeToInputTypeMap;
 
-export type EuiToggleProps = CommonProps & HTMLAttributes<HTMLDivElement> &
+export type EuiToggleProps = CommonProps &
    {
     id?: string;
     /**

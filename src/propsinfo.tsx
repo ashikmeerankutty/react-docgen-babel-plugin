@@ -6,9 +6,11 @@ type PropsInfoProps  = {
 type A = [string,any];
 
 export const PropsInfo = ({ component }: PropsInfoProps) => {
+  console.log({ component })
   return (
     <div>
       <h5>Props Table</h5>
+  <p> { component.__docsInfo.hasHtml? "Supports HTML Attributes" : "" }</p>
       <table>
         <thead>
           <tr>
