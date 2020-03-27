@@ -16,9 +16,23 @@ module.exports = function ({ types: t }) {
 function injectReactDocInfo(path, state, code, t) {
   const { filename } = state.file.opts;
   const program = path.scope.getProgramParent().path;
+  const whiteListedHtmlProps = ["className"]
 
   const data = propsParser.withCustomConfig('testconfig.json', {
     propFilter: (prop, component)=>{
+      /*
+      { defaultValue: null,
+        description: '',
+        name: 'className',
+        parent:
+        { fileName: 'react-docgen-typescript/src/components/common.ts',
+          name: 'CommonProps' },
+        required: false,
+        type: { name: 'string | undefined' } }
+        */
+      if(whiteListedHtmlProps.includes(prop.name)) {
+        return true
+      }
       if (prop.parent) {
         return !prop.parent.fileName.includes('node_modules')
       }
